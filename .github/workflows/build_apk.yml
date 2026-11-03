@@ -58,9 +58,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: v1.0.0
-          name: "Curated YouTube TV v1.0.0"
-          body: "Direct APK download for Google TV / Android TV. Works directly with the Downloader app."
+          tag_name: v1.0.1
+          name: "Curated YouTube TV v1.0.1"
+          body: "Direct APK download with robust XML parser for YouTube RSS feeds. Works directly with Downloader."
           files: CuratedYouTubeTV.apk
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}

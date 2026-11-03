@@ -68,6 +68,7 @@ class MainActivity : ComponentActivity() {
                     HomeScreen(
                         feeds = feeds,
                         isLoading = isLoading,
+                        onRetry = { refreshFeeds() },
                         onVideoSelected = { video: Video ->
                             val intent = Intent(this@MainActivity, PlayerActivity::class.java).apply {
                                 putExtra(PlayerActivity.EXTRA_VIDEO_ID, video.id)

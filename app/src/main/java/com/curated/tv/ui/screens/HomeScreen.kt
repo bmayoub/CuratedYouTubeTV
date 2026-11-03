@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -12,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.tv.material3.Button
+import androidx.tv.material3.ButtonDefaults
 import androidx.tv.material3.Text
 import com.curated.tv.model.ChannelFeed
 import com.curated.tv.model.Video
@@ -26,6 +29,7 @@ fun HomeScreen(
     feeds: List<ChannelFeed>,
     isLoading: Boolean,
     onVideoSelected: (Video) -> Unit,
+    onRetry: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     if (isLoading) {
@@ -39,7 +43,7 @@ fun HomeScreen(
                 CircularProgressIndicator(color = YoutubeRed)
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "جاري تحميل فيديوهات القنوات المخصصة...",
+                    text = "جاري جلب وتحديث الفيديوهات من YouTube...",
                     color = TextSecondary,
                     fontSize = 16.sp
                 )
@@ -55,11 +59,31 @@ fun HomeScreen(
                 .background(YoutubeBlack),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = "لا توجد قنوات مفعلة في ملف channels.json",
-                color = TextSecondary,
-                fontSize = 18.sp
-            )
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = "تعذر تحميل فيديوهات القنوات حالياً",
+                    color = TextPrimary,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "يرجى التحقق من اتصال الإنترنت ثم الضغط على إعادة المحاولة",
+                    color = TextSecondary,
+                    fontSize = 14.sp
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Button(
+                    onClick = onRetry,
+                    shape = ButtonDefaults.shape(RoundedCornerShape(8.dp)),
+                    colors = ButtonDefaults.colors(
+                        containerColor = YoutubeRed,
+                        focusedContainerColor = YoutubeRed
+                    )
+                ) {
+                    Text(text = "🔄 إعادة المحاولة", color = TextPrimary, fontSize = 16.sp)
+                }
+            }
         }
         return
     }
@@ -144,4 +168,3 @@ fun ChannelSection(
         }
     }
 }
-

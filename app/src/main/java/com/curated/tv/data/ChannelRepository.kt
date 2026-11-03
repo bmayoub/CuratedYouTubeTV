@@ -3,7 +3,6 @@ package com.curated.tv.data
 import android.content.Context
 import android.os.Environment
 import android.util.Log
-import android.util.Xml
 import com.curated.tv.model.Channel
 import com.curated.tv.model.ChannelFeed
 import com.curated.tv.model.Video
@@ -12,16 +11,15 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
-import org.xmlpull.v1.XmlPullParser
 import java.io.File
-import java.io.StringReader
 import java.util.concurrent.TimeUnit
+import java.util.regex.Pattern
 
 class ChannelRepository(private val context: Context) {
 
     private val client = OkHttpClient.Builder()
-        .connectTimeout(12, TimeUnit.SECONDS)
-        .readTimeout(15, TimeUnit.SECONDS)
+        .connectTimeout(15, TimeUnit.SECONDS)
+        .readTimeout(20, TimeUnit.SECONDS)
         .build()
 
     companion object {
@@ -34,7 +32,7 @@ class ChannelRepository(private val context: Context) {
      * قراءة رابط التحديث السحابي من الملف المحلي أو الافتراضي
      */
     private fun getInitialConfig(): Pair<String, String?> {
-        // فحص الملف المؤقت السابق
+        // 1. فحص الملف المؤقت السابق
         val cachedFile = File(context.filesDir, CACHE_FILE_NAME)
         if (cachedFile.exists() && cachedFile.canRead()) {
             try {
@@ -45,7 +43,7 @@ class ChannelRepository(private val context: Context) {
             } catch (_: Exception) {}
         }
 
-        // فحص مجلد التنزيلات
+        // 2. فحص مجلد التنزيلات
         val externalFile = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
             CONFIG_FILE_NAME
@@ -59,7 +57,7 @@ class ChannelRepository(private val context: Context) {
             } catch (_: Exception) {}
         }
 
-        // قراءة الملف المدمج في assets
+        // 3. قراءة الملف المدمج في assets
         return try {
             val content = context.assets.open(CONFIG_FILE_NAME).bufferedReader().use { it.readText() }
             val root = JSONObject(content)
@@ -82,7 +80,6 @@ class ChannelRepository(private val context: Context) {
         // 1. محاولة الجلب السحابي المباشر من GitHub إذا كان الرابط محدداً
         if (!configuredRemoteUrl.isNullOrEmpty() && configuredRemoteUrl.startsWith("http")) {
             try {
-                // إضافة timestamp لتخطي كاش CDN وضمان استلام التحديثات فوراً
                 val separator = if (configuredRemoteUrl.contains("?")) "&" else "?"
                 val freshUrl = "$configuredRemoteUrl${separator}_t=${System.currentTimeMillis()}"
 
@@ -98,7 +95,6 @@ class ChannelRepository(private val context: Context) {
                         val body = response.body?.string()
                         if (!body.isNullOrBlank() && body.contains("\"channels\"")) {
                             finalJsonString = body
-                            // حفظ نسخة كاش محلية محدثة للاستخدام عند انقطاع الإنترنت
                             try {
                                 File(context.filesDir, CACHE_FILE_NAME).writeText(body)
                                 Log.d(TAG, "Successfully synced and cached channels from GitHub.")
@@ -115,7 +111,7 @@ class ChannelRepository(private val context: Context) {
             }
         }
 
-        // 2. إذا لم ينجح الجلب السحابي (أوفلاين أو خطأ)، استخدام الكاش أو الملف الأولي
+        // 2. إذا لم ينجح الجلب السحابي، استخدام الكاش أو الملف الأولي
         if (finalJsonString == null) {
             finalJsonString = initialJson.ifEmpty { null }
         }
@@ -145,7 +141,7 @@ class ChannelRepository(private val context: Context) {
             Log.e(TAG, "Error parsing channels json", e)
         }
 
-        // قنوات افتراضية أمان في حال عدم وجود أي قناة
+        // قنوات أمان افتراضية في حال تعذر قراءة أي ملف
         if (channels.isEmpty()) {
             channels.add(
                 Channel(
@@ -175,11 +171,13 @@ class ChannelRepository(private val context: Context) {
      */
     suspend fun fetchAllFeeds(): List<ChannelFeed> = withContext(Dispatchers.IO) {
         val channels = loadChannels()
+        Log.d(TAG, "Loaded channels count: ${channels.size}")
         val feeds = mutableListOf<ChannelFeed>()
 
         for (channel in channels) {
             try {
                 val videos = fetchChannelVideos(channel)
+                Log.d(TAG, "Fetched ${videos.size} videos for channel: ${channel.name}")
                 if (videos.isNotEmpty()) {
                     feeds.add(ChannelFeed(channel = channel, videos = videos))
                 }
@@ -191,7 +189,7 @@ class ChannelRepository(private val context: Context) {
     }
 
     /**
-     * جلب الفيديوهات لقناة معينة عبر YouTube RSS
+     * جلب الفيديوهات لقناة معينة عبر YouTube RSS وتحليلها بدقة عبر Regex المقاوم لاختلافات XML
      */
     private fun fetchChannelVideos(channel: Channel): List<Video> {
         val videos = mutableListOf<Video>()
@@ -199,77 +197,85 @@ class ChannelRepository(private val context: Context) {
 
         val request = Request.Builder()
             .url(rssUrl)
-            .header("User-Agent", "Mozilla/5.0 (Android TV)")
+            .header("User-Agent", "Mozilla/5.0 (Android TV; Linux; Google TV)")
             .build()
 
-        client.newCall(request).execute().use { response ->
-            if (!response.isSuccessful) return emptyList()
-            val xmlData = response.body?.string() ?: return emptyList()
-
-            val parser = Xml.newPullParser()
-            parser.setInput(StringReader(xmlData))
-
-            var eventType = parser.eventType
-            var inEntry = false
-            var currentVideoId = ""
-            var currentTitle = ""
-            var currentPublished = ""
-            var currentThumb = ""
-            var currentDesc = ""
-
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                val name = parser.name
-                when (eventType) {
-                    XmlPullParser.START_TAG -> {
-                        when (name) {
-                            "entry" -> {
-                                inEntry = true
-                                currentVideoId = ""
-                                currentTitle = ""
-                                currentPublished = ""
-                                currentThumb = ""
-                                currentDesc = ""
-                            }
-                            "yt:videoId" -> if (inEntry) currentVideoId = parser.nextText()
-                            "title" -> if (inEntry) currentTitle = parser.nextText()
-                            "published" -> if (inEntry) currentPublished = parser.nextText()
-                            "media:thumbnail" -> {
-                                if (inEntry) {
-                                    val url = parser.getAttributeValue(null, "url")
-                                    if (currentThumb.isEmpty() && url != null) {
-                                        currentThumb = url
-                                    }
-                                }
-                            }
-                            "media:description" -> if (inEntry) currentDesc = parser.nextText()
-                        }
-                    }
-                    XmlPullParser.END_TAG -> {
-                        if (name == "entry" && inEntry) {
-                            if (currentVideoId.isNotEmpty()) {
-                                if (currentThumb.isEmpty()) {
-                                    currentThumb = "https://i.ytimg.com/vi/$currentVideoId/hqdefault.jpg"
-                                }
-                                val formattedDate = currentPublished.take(10)
-                                videos.add(
-                                    Video(
-                                        id = currentVideoId,
-                                        title = currentTitle,
-                                        channelName = channel.name,
-                                        channelId = channel.channelId,
-                                        publishedDate = formattedDate,
-                                        thumbnailUrl = currentThumb,
-                                        description = currentDesc
-                                    )
-                                )
-                            }
-                            inEntry = false
-                        }
-                    }
+        try {
+            client.newCall(request).execute().use { response ->
+                if (!response.isSuccessful) {
+                    Log.w(TAG, "RSS fetch HTTP error ${response.code} for ${channel.name}")
+                    return emptyList()
                 }
-                eventType = parser.next()
+                val xmlData = response.body?.string() ?: return emptyList()
+
+                // استخراج جميع كتل <entry>...</entry>
+                val entryPattern = Pattern.compile("<entry>(.*?)</entry>", Pattern.DOTALL)
+                val matcher = entryPattern.matcher(xmlData)
+
+                val idPattern = Pattern.compile("<yt:videoId>(.*?)</yt:videoId>|<id>yt:video:(.*?)</id>", Pattern.DOTALL)
+                val titlePattern = Pattern.compile("<title>(.*?)</title>", Pattern.DOTALL)
+                val publishedPattern = Pattern.compile("<published>(.*?)</published>", Pattern.DOTALL)
+                val thumbPattern = Pattern.compile("<media:thumbnail[^>]+url=[\"']([^\"']+)[\"']", Pattern.DOTALL)
+                val descPattern = Pattern.compile("<media:description>(.*?)</media:description>", Pattern.DOTALL)
+
+                while (matcher.find()) {
+                    val entryXml = matcher.group(1) ?: continue
+
+                    // 1. معرف الفيديو
+                    val idMatcher = idPattern.matcher(entryXml)
+                    val videoId = if (idMatcher.find()) {
+                        idMatcher.group(1) ?: idMatcher.group(2) ?: ""
+                    } else ""
+
+                    if (videoId.isBlank()) continue
+
+                    // 2. عنوان الفيديو
+                    val titleMatcher = titlePattern.matcher(entryXml)
+                    val rawTitle = if (titleMatcher.find()) titleMatcher.group(1) ?: "" else ""
+                    val title = unescapeXml(rawTitle)
+
+                    // 3. تاريخ النشر
+                    val pubMatcher = publishedPattern.matcher(entryXml)
+                    val publishedRaw = if (pubMatcher.find()) pubMatcher.group(1) ?: "" else ""
+                    val publishedDate = publishedRaw.take(10)
+
+                    // 4. الصورة المصغرة
+                    val thumbMatcher = thumbPattern.matcher(entryXml)
+                    val thumbUrl = if (thumbMatcher.find()) thumbMatcher.group(1) ?: "" else ""
+                    val finalThumb = if (thumbUrl.isNotBlank()) thumbUrl else "https://i.ytimg.com/vi/$videoId/hqdefault.jpg"
+
+                    // 5. الوصف
+                    val descMatcher = descPattern.matcher(entryXml)
+                    val rawDesc = if (descMatcher.find()) descMatcher.group(1) ?: "" else ""
+                    val desc = unescapeXml(rawDesc)
+
+                    videos.add(
+                        Video(
+                            id = videoId.trim(),
+                            title = title.ifBlank { "فيديو يوتيوب" },
+                            channelName = channel.name,
+                            channelId = channel.channelId,
+                            publishedDate = publishedDate,
+                            thumbnailUrl = finalThumb,
+                            description = desc
+                        )
+                    )
+                }
             }
+        } catch (e: Exception) {
+            Log.e(TAG, "Exception parsing RSS for channel ${channel.name}: ${e.message}", e)
         }
         return videos
+    }
+
+    private fun unescapeXml(text: String): String {
+        return text
+            .replace("&amp;", "&")
+            .replace("&lt;", "<")
+            .replace("&gt;", ">")
+            .replace("&quot;", "\"")
+            .replace("&apos;", "'")
+            .replace("&#39;", "'")
+            .trim()
     }
 }
