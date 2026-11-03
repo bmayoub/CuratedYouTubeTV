@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.tv.material3.Button
@@ -28,6 +29,7 @@ import com.curated.tv.ui.theme.YoutubeRed
 fun HomeScreen(
     feeds: List<ChannelFeed>,
     isLoading: Boolean,
+    errorMessage: String = "",
     onVideoSelected: (Video) -> Unit,
     onRetry: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -43,7 +45,7 @@ fun HomeScreen(
                 CircularProgressIndicator(color = YoutubeRed)
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "جاري جلب وتحديث الفيديوهات من YouTube...",
+                    text = "جاري الاتصال وجلب الفيديوهات من YouTube...",
                     color = TextSecondary,
                     fontSize = 16.sp
                 )
@@ -59,20 +61,33 @@ fun HomeScreen(
                 .background(YoutubeBlack),
             contentAlignment = Alignment.Center
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(32.dp)
+            ) {
                 Text(
-                    text = "تعذر تحميل فيديوهات القنوات حالياً",
+                    text = "تعذر تحميل فيديوهات القنوات",
                     color = TextPrimary,
-                    fontSize = 20.sp,
+                    fontSize = 22.sp,
                     fontWeight = FontWeight.Bold
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(10.dp))
+                if (errorMessage.isNotEmpty()) {
+                    Text(
+                        text = "تفاصيل الخطأ: $errorMessage",
+                        color = YoutubeRed,
+                        fontSize = 13.sp,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                }
                 Text(
-                    text = "يرجى التحقق من اتصال الإنترنت ثم الضغط على إعادة المحاولة",
+                    text = "يرجى التأكد من اتصال الشاشة بالإنترنت ثم الضغط على زر إعادة المحاولة",
                     color = TextSecondary,
-                    fontSize = 14.sp
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center
                 )
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(
                     onClick = onRetry,
                     shape = ButtonDefaults.shape(RoundedCornerShape(8.dp)),
@@ -81,7 +96,7 @@ fun HomeScreen(
                         focusedContainerColor = YoutubeRed
                     )
                 ) {
-                    Text(text = "🔄 إعادة المحاولة", color = TextPrimary, fontSize = 16.sp)
+                    Text(text = "🔄 إعادة المحاولة الآن", color = TextPrimary, fontSize = 16.sp)
                 }
             }
         }

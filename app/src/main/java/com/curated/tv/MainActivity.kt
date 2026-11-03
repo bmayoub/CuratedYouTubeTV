@@ -32,13 +32,15 @@ class MainActivity : ComponentActivity() {
                 val coroutineScope = rememberCoroutineScope()
                 var feeds by remember { mutableStateOf<List<ChannelFeed>>(emptyList()) }
                 var isLoading by remember { mutableStateOf(true) }
+                var errorMessage by remember { mutableStateOf("") }
                 var selectedNav by remember { mutableStateOf(NavItem.HOME) }
 
-                // دالة جلب الفيديوهات
                 fun refreshFeeds() {
                     isLoading = true
+                    errorMessage = ""
                     coroutineScope.launch {
                         feeds = repository.fetchAllFeeds()
+                        errorMessage = repository.lastErrorMessage
                         isLoading = false
                     }
                 }
@@ -68,6 +70,7 @@ class MainActivity : ComponentActivity() {
                     HomeScreen(
                         feeds = feeds,
                         isLoading = isLoading,
+                        errorMessage = errorMessage,
                         onRetry = { refreshFeeds() },
                         onVideoSelected = { video: Video ->
                             val intent = Intent(this@MainActivity, PlayerActivity::class.java).apply {
@@ -83,4 +86,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-

@@ -44,13 +44,13 @@ jobs:
 
       - name: Rename APK for Easy Download
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk CuratedYouTubeTV.apk
+          cp app/build/outputs/apk/debug/app-debug.apk CuratedYouTubeTV_v102.apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: CuratedYouTubeTV-debug-apk
-          path: CuratedYouTubeTV.apk
+          path: CuratedYouTubeTV_v102.apk
           if-no-files-found: error
           retention-days: 30
 
@@ -58,9 +58,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: v1.0.1
-          name: "Curated YouTube TV v1.0.1"
-          body: "Direct APK download with robust XML parser for YouTube RSS feeds. Works directly with Downloader."
-          files: CuratedYouTubeTV.apk
+          tag_name: v1.0.2
+          name: "Curated YouTube TV v1.0.2"
+          body: "Direct APK download with full offline fallback, robust RSS parsing, and on-screen diagnostics. Works directly with Downloader."
+          files: CuratedYouTubeTV_v102.apk
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
