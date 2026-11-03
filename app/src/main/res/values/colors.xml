@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="youtube_red">#FF0000</color>
+    <color name="youtube_black">#0F0F0F</color>
+    <color name="youtube_dark_card">#212121</color>
+    <color name="youtube_sidebar">#121212</color>
+    <color name="focus_border">#FFFFFF</color>
+    <color name="text_primary">#F1F1F1</color>
+    <color name="text_secondary">#AAAAAA</color>
+</resources>
+

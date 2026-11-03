@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path
+        android:fillColor="#0F0F0F"
+        android:pathData="M0,0h320v180h-320z" />
+    <!-- YouTube style red badge -->
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M110,65 h100 c10,0 15,5 15,25 v0 c0,20 -5,25 -15,25 h-100 c-10,0 -15,-5 -15,-25 v0 c0,-20 5,-25 15,-25 Z" />
+    <!-- White Play Triangle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M152,78 L175,90 L152,102 Z" />
+</vector>
+

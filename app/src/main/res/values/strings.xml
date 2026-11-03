@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Curated TV</string>
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_channels">القنوات</string>
+    <string name="nav_recent">الأحدث</string>
+    <string name="nav_settings">الإعدادات</string>
+    <string name="loading_videos">جاري تحميل الفيديوهات...</string>
+    <string name="no_videos">لا توجد فيديوهات متاحة حالياً</string>
+    <string name="retry">إعادة المحاولة</string>
+</resources>
+

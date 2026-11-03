@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "app_name": "Curated YouTube TV",
+  "remote_config_url": "",
+  "channels": [
+    {
+      "name": "سكتش | Sketch",
+      "handle": "@worldbysketch",
+      "channel_id": "UCr4xUqTzdvZ8U8PcEDL_YBg",
+      "url": "https://www.youtube.com/@worldbysketch",
+      "category": "معرفة ووثائقيات",
+      "enabled": true
+    },
+    {
+      "name": "قصص مدار | Qisas Madar",
+      "handle": "@Qisas_Madar",
+      "channel_id": "UC6t0GlogFquiOyriK98hyBA",
+      "url": "https://www.youtube.com/@Qisas_Madar",
+      "category": "قصص وتاريخ",
+      "enabled": true
+    }
+  ]
+}
+
