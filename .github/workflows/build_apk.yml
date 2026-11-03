@@ -7,6 +7,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build Debug APK
@@ -39,10 +42,25 @@ jobs:
       - name: Build Debug APK
         run: gradle assembleDebug --stacktrace
 
+      - name: Rename APK for Easy Download
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk CuratedYouTubeTV.apk
+
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: CuratedYouTubeTV-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: CuratedYouTubeTV.apk
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish Public GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: v1.0.0
+          name: "Curated YouTube TV v1.0.0"
+          body: "Direct APK download for Google TV / Android TV. Works directly with the Downloader app."
+          files: CuratedYouTubeTV.apk
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
