@@ -18,7 +18,334 @@
       "url": "https://www.youtube.com/@Qisas_Madar",
       "category": "قصص وتاريخ",
       "enabled": true
+    },
+    {
+      "name": "بدایة الإنسان",
+      "handle": "@badayt-al-insan",
+      "channel_id": "UC5lr1vknNTt0QfGL3vKCaUA",
+      "url": "https://www.youtube.com/@badayt-al-insan",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "بكل بساطة – Kurzgesagt ",
+      "handle": "@kurzgesagt_ar",
+      "channel_id": "UCwRH985XgMYXQ6NxXDo8npw",
+      "url": "https://www.youtube.com/@kurzgesagt_ar",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "اصل الحكاية",
+      "handle": "@AslAlHekayaYT",
+      "channel_id": "UCe2uexvihw1Ym8yMdwb-26A",
+      "url": "https://www.youtube.com/@AslAlHekayaYT",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "عشوائيات",
+      "handle": "@3shwa2yatTV",
+      "channel_id": "UC5nBV_ZxBy_uZTzXxnOBbVQ",
+      "url": "https://www.youtube.com/@3shwa2yatTV",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "History &amp; Civilizations",
+      "handle": "@HistoryCivilisations",
+      "channel_id": "UC1A8_--7edtEtHJEx8bG-4Q",
+      "url": "https://www.youtube.com/@HistoryCivilisations",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "يوسف البناي",
+      "handle": "@youssefalbanay",
+      "channel_id": "UC-aidIQfUqhLYhDl-3sbQGA",
+      "url": "https://www.youtube.com/@youssefalbanay",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "NobleTalk",
+      "handle": "@nobletalk2",
+      "channel_id": "UCJkwcupVINeXAJS78DJKopw",
+      "url": "https://www.youtube.com/@nobletalk2",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "باختصار",
+      "handle": "@Bikhtsar",
+      "channel_id": "UCBT799O0cSwqSxe2YUDL56A",
+      "url": "https://www.youtube.com/@Bikhtsar",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Ould Hadda - ولد حدة",
+      "handle": "@OuldHadda",
+      "channel_id": "UCcl48Wlh5Z4fABgnGEIstjw",
+      "url": "https://www.youtube.com/@OuldHadda",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "شَخْبَطَة نَفْسِيَّة",
+      "handle": "@ShakhbataNafs",
+      "channel_id": "UCZIOKpnC6XiAVCvZi_K2ivQ",
+      "url": "https://www.youtube.com/@ShakhbataNafs",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "العلم بالملعقة",
+      "handle": "@science_by_the_spoon",
+      "channel_id": "UCqCwnsT0Ye8w9RJp6PZegww",
+      "url": "https://www.youtube.com/@science_by_the_spoon",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "بانتوماث - Pantomath",
+      "handle": "@AnaPantomath",
+      "channel_id": "UCdttmnJddGQZsXRL_DbqgWA",
+      "url": "https://www.youtube.com/@AnaPantomath",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "أطلال - Atlal",
+      "handle": "@Atlal-m46",
+      "channel_id": "UCs0LRTVK6rwldJ1RQ5FA_0g",
+      "url": "https://www.youtube.com/@Atlal-m46",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Nat Geo Kids",
+      "handle": "@natgeokids",
+      "channel_id": "UCXVCgDuD_QCkI7gTKU7-tpg",
+      "url": "https://www.youtube.com/@natgeokids",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "قناة سوبر وان التعليمية",
+      "handle": "@super.one.education",
+      "channel_id": "UCU3vOX0uj6hj3PCtnNJSqBg",
+      "url": "https://www.youtube.com/@super.one.education",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Nat Geo Abu Dhabi",
+      "handle": "@natgeoabudhabime",
+      "channel_id": "UCLiTe0aOHShx7hXGyqZ9UIw",
+      "url": "https://www.youtube.com/@natgeoabudhabime",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "اقتصاد الكوكب",
+      "handle": "@Eqkawkab",
+      "channel_id": "UCjMdgUQQM68S7tdXspE45Ag",
+      "url": "https://www.youtube.com/@Eqkawkab",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "الجانب المُشرق | Bright Side Arabic",
+      "handle": "@BS_Arabic",
+      "channel_id": "UCmYYUdR85LRVB5yT1Y7DjFA",
+      "url": "https://www.youtube.com/@BS_Arabic",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "الوثائقية documentary tv",
+      "handle": "@docum_tv",
+      "channel_id": "UCYUZPk5bBfBg8vM6eflIt6g",
+      "url": "https://www.youtube.com/@docum_tv",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Dr.SHAHEEN",
+      "handle": "@Senuory",
+      "channel_id": "UCsjL56WbosaUqSUJiOWtXOQ",
+      "url": "https://www.youtube.com/@Senuory",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "أوبريشن آوتش",
+      "handle": "@OperationOuchArabic",
+      "channel_id": "UCVxuRizOxDaivVWLIdtcQ2g",
+      "url": "https://www.youtube.com/@OperationOuchArabic",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "MiwuScience النسخة العربية",
+      "handle": "@MiwuScienceArabic",
+      "channel_id": "UCQYV-yBBawK-kVN8Ic2i-Ww",
+      "url": "https://www.youtube.com/@MiwuScienceArabic",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Al3alam Documentary",
+      "handle": "@Al3alamDocumentary",
+      "channel_id": "UCmKhqiup43DLIWgcnR5zzDw",
+      "url": "https://www.youtube.com/@Al3alamDocumentary",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Nidhal Guessoum نضال قسوم",
+      "handle": "@NidhalG",
+      "channel_id": "UCxPtfAOwtyd_N6keP3MnVmw",
+      "url": "https://www.youtube.com/@NidhalG",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "la langue francaise",
+      "handle": "@Lalanguefrancaises",
+      "channel_id": "UCQlhmoawtLk1mYYN_flj_og",
+      "url": "https://www.youtube.com/@Lalanguefrancaises",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "English Singsing",
+      "handle": "@EnglishSingsing",
+      "channel_id": "UCN7JrWbU6DjlnX5cAyHbPbA",
+      "url": "https://www.youtube.com/@EnglishSingsing",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Mystery Planet | كوكب غامض",
+      "handle": "@MysteryPlanet-z2h",
+      "channel_id": "UC6euXWUrR-f8zX8eXGoZXYA",
+      "url": "https://www.youtube.com/@MysteryPlanet-z2h",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "DW Documentary وثائقية دي دبليو",
+      "handle": "@dwdocarabia",
+      "channel_id": "UCET6sWl4Xcu-U8Ka9PJPrwA",
+      "url": "https://www.youtube.com/@dwdocarabia",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "New Media Academy Life ",
+      "handle": "@NewMedia_Life",
+      "channel_id": "UCtJmfVv0a52Bu7BnJJtZXKw",
+      "url": "https://www.youtube.com/@NewMedia_Life",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "عجائب العالم Tv",
+      "handle": "@Ajayeb-Tv",
+      "channel_id": "UCVFG5NREOL0lh4EIohG40nw",
+      "url": "https://www.youtube.com/@Ajayeb-Tv",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "رحلة عبر الحضارات",
+      "handle": "@3etmane",
+      "channel_id": "UC4bNJQWx2Z5PVq05fD3Xi1A",
+      "url": "https://www.youtube.com/@3etmane",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Al Jazeera Documentary الجزيرة الوثائقية",
+      "handle": "@aljazeeradocumentary",
+      "channel_id": "UC0LSnqrwqtMwl2YwfUpO66g",
+      "url": "https://www.youtube.com/@aljazeeradocumentary",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "وثائقيات عجائب الكون",
+      "handle": "@upalaa",
+      "channel_id": "UCmXfeFJ7o30nOInG4wVa_2g",
+      "url": "https://www.youtube.com/@upalaa",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Asharq Documentary الشرق الوثائقية",
+      "handle": "@AsharqDoc",
+      "channel_id": "UCJdfy_z2iMsODx70_c2HHxQ",
+      "url": "https://www.youtube.com/@AsharqDoc",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "وثائقي غمرة",
+      "handle": "@Ghomra_documentary",
+      "channel_id": "UC9D6b7p5hIC9sA9Hlz2CgDw",
+      "url": "https://www.youtube.com/@Ghomra_documentary",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "هدوء الليل",
+      "handle": "@houdoulayl",
+      "channel_id": "UCzKTdmbfIlpK0qkz5c_ZsSQ",
+      "url": "https://www.youtube.com/@houdoulayl",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "أنفاس العصور",
+      "handle": "@boringdocumentaryar",
+      "channel_id": "UCMT_GIJHq3zpMxlwe7LkNyg",
+      "url": "https://www.youtube.com/@boringdocumentaryar",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "حيدورانت - haidurant",
+      "handle": "@-haidurant391",
+      "channel_id": "UC1-Eg1iWNmDE_V953oOgh-Q",
+      "url": "https://www.youtube.com/@-haidurant391",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "احلام العصور الغابرة",
+      "handle": "@%D8%A7%D8%AD%D9%84%D8%A7%D9%85-%D8%A7%D9%84%D8%B9%D8%B5%D9%88%D8%B1-%D8%A7%D9%84%D8%BA%D8%A7%D8%A8%D8%B1%D8%A9",
+      "channel_id": "UC5ALSVrox-Dmbi44V6dvhuQ",
+      "url": "https://www.youtube.com/@%D8%A7%D8%AD%D9%84%D8%A7%D9%85-%D8%A7%D9%84%D8%B9%D8%B5%D9%88%D8%B1-%D8%A7%D9%84%D8%BA%D8%A7%D8%A8%D8%B1%D8%A9",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Oddlyyy",
+      "handle": "@Oddly22",
+      "channel_id": "UC1jbgssi-n9CpF5nGYVFzXQ",
+      "url": "https://www.youtube.com/@Oddly22",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "الليل يحكي",
+      "handle": "@layl_yahki",
+      "channel_id": "UCKwXxOQQoEkWgQyocG3IEQg",
+      "url": "https://www.youtube.com/@layl_yahki",
+      "category": "محتوى مخصص",
+      "enabled": true
     }
   ]
 }
-
