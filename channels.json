@@ -546,6 +546,30 @@
       "url": "https://www.youtube.com/@hadithalayl",
       "category": "محتوى مخصص",
       "enabled": true
+    },
+    {
+      "name": "StickStory | ستيك ستوري",
+      "handle": "@StickStory-26",
+      "channel_id": "UCglkLsLlTV40T3TMqr_jEvA",
+      "url": "https://www.youtube.com/@StickStory-26",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "قناة يوسف حسين",
+      "handle": "@youssef_houssein",
+      "channel_id": "UCbD-V5dq_tY8qaTX43lLFEw",
+      "url": "https://www.youtube.com/@youssef_houssein",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "حَصيف",
+      "handle": "@2livhl",
+      "channel_id": "UCBGFktMB_7canp204EFCOdQ",
+      "url": "https://www.youtube.com/@2livhl",
+      "category": "محتوى مخصص",
+      "enabled": true
     }
   ]
 }
