@@ -570,6 +570,46 @@
       "url": "https://www.youtube.com/@2livhl",
       "category": "محتوى مخصص",
       "enabled": true
+    },
+    {
+      "name": "متاهة ",
+      "handle": "@mataha-YT",
+      "channel_id": "UCKtlP_9yK0KQA9pHYNNma5g",
+      "url": "https://www.youtube.com/@mataha-YT",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "الفلسفة للنوم",
+      "handle": "@%D8%A7%D9%84%D9%81%D9%84%D8%B3%D9%81%D8%A9-%D9%84%D9%84%D9%86%D9%88%D9%85",
+      "channel_id": "UCw8r5QFuLcygGCxxNt60JOw",
+      "url": "https://www.youtube.com/@%D8%A7%D9%84%D9%81%D9%84%D8%B3%D9%81%D8%A9-%D9%84%D9%84%D9%86%D9%88%D9%85",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "سقراطيا",
+      "handle": "@%D8%B3%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A7",
+      "channel_id": "UCDbaF__SeOl2miH9fUZk_mg",
+      "url": "https://www.youtube.com/@%D8%B3%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A7",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "دردشة_ليلية",
+      "handle": "@%D8%AF%D8%B1%D8%AF%D8%B4%D8%A9_%D9%84%D9%8A%D9%84%D9%8A%D8%A9-2",
+      "channel_id": "UCqmfmYMoGmqepo_TkdZGL1w",
+      "url": "https://www.youtube.com/@%D8%AF%D8%B1%D8%AF%D8%B4%D8%A9_%D9%84%D9%8A%D9%84%D9%8A%D8%A9-2",
+      "category": "محتوى مخصص",
+      "enabled": true
+    },
+    {
+      "name": "Mr Wimpy",
+      "handle": "@MrWimpy-e9u",
+      "channel_id": "UCaP8clcAYTZ8tG3GR8lQiKg",
+      "url": "https://www.youtube.com/@MrWimpy-e9u",
+      "category": "محتوى مخصص",
+      "enabled": true
     }
   ]
 }
