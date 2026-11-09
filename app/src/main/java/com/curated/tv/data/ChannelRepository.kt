@@ -57,30 +57,46 @@ class ChannelRepository(private val context: Context) {
         val channels = mutableListOf<Channel>()
         var jsonString: String? = null
 
-        // 1. محاولة الجلب السحابي المباشر من GitHub
+        // 0. محاولة القراءة المباشرة من ذاكرة التلفاز (/sdcard/Download/channels.json)
         try {
-            val freshUrl = "$DEFAULT_REMOTE_URL?_t=${System.currentTimeMillis()}"
-            Log.d(TAG, "Requesting channels from GitHub: $freshUrl")
-            val request = Request.Builder()
-                .url(freshUrl)
-                .header("Cache-Control", "no-cache")
-                .header("User-Agent", "CuratedYouTubeTV-Android")
-                .build()
-
-            client.newCall(request).execute().use { response ->
-                if (response.isSuccessful) {
-                    val body = response.body?.string()
-                    if (!body.isNullOrBlank() && body.contains("\"channels\"")) {
-                        jsonString = body
-                        // حفظ في الكاش الداخلي
-                        try {
-                            File(context.filesDir, CACHE_FILE_NAME).writeText(body)
-                        } catch (_: Throwable) {}
-                    }
+            val downloadFile = File("/sdcard/Download/channels.json")
+            if (downloadFile.exists() && downloadFile.canRead() && downloadFile.length() > 20) {
+                val content = downloadFile.readText()
+                if (content.contains("\"channels\"")) {
+                    jsonString = content
+                    Log.d(TAG, "Loaded channels directly from /sdcard/Download/channels.json")
                 }
             }
         } catch (e: Throwable) {
-            Log.w(TAG, "Remote sync failed: ${e.message}")
+            Log.w(TAG, "Could not read local Download/channels.json: ${e.message}")
+        }
+
+        // 1. محاولة الجلب السحابي المباشر من GitHub
+        if (jsonString == null) {
+            try {
+                val freshUrl = "$DEFAULT_REMOTE_URL?_t=${System.currentTimeMillis()}"
+                Log.d(TAG, "Requesting channels from GitHub: $freshUrl")
+                val request = Request.Builder()
+                    .url(freshUrl)
+                    .header("Cache-Control", "no-cache")
+                    .header("User-Agent", "CuratedYouTubeTV-Android")
+                    .build()
+
+                client.newCall(request).execute().use { response ->
+                    if (response.isSuccessful) {
+                        val body = response.body?.string()
+                        if (!body.isNullOrBlank() && body.contains("\"channels\"")) {
+                            jsonString = body
+                            // حفظ في الكاش الداخلي
+                            try {
+                                File(context.filesDir, CACHE_FILE_NAME).writeText(body)
+                            } catch (_: Throwable) {}
+                        }
+                    }
+                }
+            } catch (e: Throwable) {
+                Log.w(TAG, "Remote sync failed: ${e.message}")
+            }
         }
 
         // 2. إذا فشل الجلب السحابي، فحص الكاش الداخلي
