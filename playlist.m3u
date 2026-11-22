@@ -1,0 +1,12 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="echorouk" tvg-name="الشروق الإخبارية" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ec/Echorouk_News_logo.png" group-title="أخبار",الشروق الإخبارية - Echorouk News
+https://hls-distrib-eu0.dzsecurity.net/s/eyJ2IjoxLCJraWQiOiJlZGdlLXYxIiwiZXhwIjoxNzk1Mzk5MDA2LCJpYXQiOjE3OTUzNzAyMjksImNoYW5uZWxfaWQiOiJlY2hvcm91a25ld3MiLCJhc24iOjM2OTQ3LCJ0ZW5hbnRfaWQiOiJlY2hvcm91ayIsInNlc3Npb25faWQiOiIyOTU3ODU5Yi1iNTIxLTQyMzMtYmEyNC1lNTVjM2QyNjdlM2EifQ.3KAlW0_0MRsn1tWbPC_Q7Ye37J9f8UMEudbNCeDNi94/hls/echorouknews/playlist.m3u8
+
+#EXTINF:-1 tvg-id="foxnews" tvg-name="Fox News" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/67/Fox_News_Channel_logo.svg" group-title="أخبار",فوكس نيوز - Fox News
+https://manifest-oci-us-ashburn-1-vop1.cfcdn.mux.com/CTRjbKBojAujLD9H9QEEp2CgpbW6aWyXR5E1DNINUt4OGACjjQxM4ZSSGzsWRVoATcSZwQ2iqHIetg6bmrn01TskJ01RdXazrcR8i1xSlqsVM/rendition.m3u8?cdn=cloudflare&expires=1795975200&skid=default&signature=NmIwYzY0MzhfZWM1YjBiNzA3MjBmYzRmMTU0MDUzNTM1YWZhMzRiZjdiMmJjYjUwYjc0MjA3MjQzYzQ3MWUxYjFlMzkxYjE4Mw==
+
+#EXTINF:-1 tvg-id="aljazeera" tvg-name="الجزيرة الإخبارية" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b3/Aljazeera_logo.svg" group-title="أخبار",الجزيرة الإخبارية - Al Jazeera
+https://live-hls-web-aja.getaj.net/AJA/01.m3u8
+
+#EXTINF:-1 tvg-id="megaa01" tvg-name="قناة Megaa" tvg-logo="" group-title="منوعات",قناة Megaa Live
+https://pun02.myturn1.top:8088/live/megaa01/playlist.m3u8?id=124449&pk=50f81b91f3970e43ba326d7b1f61418f87dd88339170d04d082744a414081c9e6aa0b1eb2fbd95d670e9841954ba53fd5e556979396e4d3f6e8c8abbd138fa8b
