@@ -10,3 +10,6 @@ https://live-hls-web-aja.getaj.net/AJA/01.m3u8
 
 #EXTINF:-1 tvg-id="megaa01" tvg-name="قناة Megaa" tvg-logo="" group-title="منوعات",قناة Megaa Live
 https://pun02.myturn1.top:8088/live/megaa01/playlist.m3u8?id=124449&pk=50f81b91f3970e43ba326d7b1f61418f87dd88339170d04d082744a414081c9e6aa0b1eb2fbd95d670e9841954ba53fd5e556979396e4d3f6e8c8abbd138fa8b
+
+#EXTINF:-1 tvg-name="قناة الجزيرة الوثائقية" group-title="بث مباشر",قناة الجزيرة الوثائقية
+https://live-doc.aljazeera.net/hls/live.m3u8
