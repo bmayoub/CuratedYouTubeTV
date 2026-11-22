@@ -13,3 +13,6 @@ https://pun02.myturn1.top:8088/live/megaa01/playlist.m3u8?id=124449&pk=50f81b91f
 
 #EXTINF:-1 tvg-name="قناة الجزيرة الوثائقية" group-title="بث مباشر",قناة الجزيرة الوثائقية
 https://live-doc.aljazeera.net/hls/live.m3u8
+
+#EXTINF:-1 tvg-name="العربية الحدث" group-title="بث مباشر",العربية الحدث
+https://example.com/stream/index.m3u8
